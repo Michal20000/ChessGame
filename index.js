@@ -13,8 +13,7 @@ const corsData = {
 			'GET', 
 			'POST'
 
-		],
-    credentials: true
+		]
 
   }
 
