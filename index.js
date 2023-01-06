@@ -8,14 +8,10 @@ const application = expressModule();
 const serverHTTP = HTTP.createServer(application);
 const corsData = {
 	cors: {
-    origin: 'https://chessgame-prod-mmm-4nug91.mo2.mogenius.io/',
+    origin: '*',
     methods: [
 			'GET', 
 			'POST'
-
-		],
-    allowedHeaders: [
-			'MM'
 
 		],
     credentials: true
