@@ -26,12 +26,8 @@ const RoomController = (socket, data) => {
 	
 	if (Authorization(session)) { // && notInGame !IMPORTANT
 		if (InRoom(session)) {
-			let room = global.rooms.get(session['room']);
-			if (room) {
-				RoomResponse(room);
-				console.log('Already In Room');
-
-			}
+			RoomResponse(room);
+			console.log('Already In Room');
 
 		}
 		else {
