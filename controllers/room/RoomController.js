@@ -3,6 +3,7 @@ const Authorization = require('../../utilities/Authorization');
 const JoinRoom = require('../../utilities/room/JoinRoom');
 const CreateRoom = require('../../utilities/room/CreateRoom');
 const InRoom = require('../../utilities/room/InRoom');
+const RoomResponse = require('../../utilities/room/RoomResponse');
 
 const RoomController = (socket, data) => {
 	let hash = data.hash;
