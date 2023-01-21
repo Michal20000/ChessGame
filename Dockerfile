@@ -1,5 +1,5 @@
 # Common build stage
-FROM node:18-alpine3.15 as common-build-stage
+FROM node:18-alpine3.15 AS common-build-stage
 
 COPY . ./app
 
@@ -13,7 +13,7 @@ RUN npm i socket.io
 
 EXPOSE 3000
 
-FROM common-build-stage as production-build-stage
+FROM common-build-stage AS production-build-stage
 
 ENV NODE_ENV production
 ENV PORT 3000

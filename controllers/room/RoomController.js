@@ -2,6 +2,7 @@ const ReturnSession = require('../../utilities/ReturnSession');
 const Authorization = require('../../utilities/Authorization');
 const JoinRoom = require('../../utilities/room/JoinRoom');
 const CreateRoom = require('../../utilities/room/CreateRoom');
+const InRoom = require('../../utilities/room/InRoom');
 
 const RoomController = (socket, data) => {
 	let hash = data.hash;
@@ -23,13 +24,24 @@ const RoomController = (socket, data) => {
 	// Ktoremu graczowi odejmowany jest czas
 	
 	if (Authorization(session)) { // && notInGame !IMPORTANT
-		if (JoinRoom(socket, session, mainData.duration)) {
-			console.log('Join Room');
+		if (InRoom(session)) {
+			let room = global.rooms[session['room']];
+			if (room) {
+				RoomResponse(room);
+
+			}
 
 		}
 		else {
-			CreateRoom(socket, session, mainData.duration);
-			console.log('Create Room');
+			if (JoinRoom(socket, session, mainData.duration)) {
+				console.log('Join Room');
+
+			}
+			else {
+				CreateRoom(socket, session, mainData.duration);
+				console.log('Create Room');
+
+			}
 
 		}
 		// IF ROOM EXISTS - JOIN
